@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>自考校考答题答案 - 晴天雨露</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="assets/element-ui/index.css">
+        <link rel="stylesheet" href="assets/css/index.css">
+        <script src="assets/vue/vue.min.js"></script>
+        <script src="assets/element-ui/index.js"></script>
+        <script src="assets/js/index.js"></script>
+    </head>
+    <body>
+        <el-row class="header-search">
+            <el-row class="max-width-1000">
+                <el-input :autofocus="true" :clearable="true" placeholder="请输入查询内容..." v-model="keyword" @input="onKeywordQueryChange" :disabled="courseClass === ''">
+                    <el-select :clearable="true" @change="onSelectCourseChange" v-model="courseClass" slot="prepend" placeholder="请选择考试科目">
+                        <el-option v-for="(item, index) in courseList" :label="item.course" :value="item.course" :key="index"></el-option>
+                    </el-select>
+                    <i slot="suffix" class="el-input__icon el-icon-search"></i>
+                </el-input>
+            </el-row>
+        </el-row>
+        <el-row class="content-box max-width-1000">
+            <el-row class="content">
+                <el-row style="margin-bottom: 5px !important;" v-for="(item, index) in subjectList" :key="index">
+                    <el-card>
+                        <el-row slot="header" v-text="item.title"></el-row>
+                        <el-row v-for="(ite, idx) in item.data" :key="idx" class="text-item">
+                            <el-row class="course-align">
+                                <b>{{idx+1}}、</b><b v-html="ite.title"></b>
+                            </el-row>
+                            <el-row class="answer-option" v-for="(aitem, aindex) in JSON.parse(ite.answer_option)" :key="aindex">
+                                <span v-if="isImage(aitem)" v-html="aitem"></span>
+                                <span v-else v-text="aitem"></span>
+                            </el-row>
+                            <el-row class="answer" v-text="ite.answer"></el-row>
+                        </el-row>
+                    </el-card>
+                </el-row>
+            </el-row>
+        </el-row>
+    </body>
+</html>
