@@ -4,16 +4,16 @@
         <title>自考校考答题答案 - 晴天雨露</title>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="assets/element-ui/index.css">
-        <link rel="stylesheet" href="assets/css/index.css">
-        <script src="assets/vue/vue.min.js"></script>
+        <link rel="stylesheet" href="assets/index.css">
+        <script src="assets/vue.min.js"></script>
         <script src="assets/element-ui/index.js"></script>
-        <script src="assets/js/index.js"></script>
+        <script src="assets/index.js"></script>
     </head>
     <body>
         <el-row class="header-search">
             <el-row class="max-width-1000">
                 <el-input :autofocus="true" :clearable="true" placeholder="请输入查询内容..." v-model="keyword" @input="onKeywordQueryChange" :disabled="courseClass === ''">
-                    <el-select :clearable="true" @change="onSelectCourseChange" v-model="courseClass" slot="prepend" placeholder="请选择考试科目">
+                    <el-select @change="onSelectCourseChange" v-model="courseClass" slot="prepend" placeholder="请选择考试科目">
                         <el-option v-for="(item, index) in courseList" :label="item.course" :value="item.course" :key="index"></el-option>
                     </el-select>
                     <i slot="suffix" class="el-input__icon el-icon-search"></i>

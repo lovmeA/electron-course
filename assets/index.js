@@ -25,6 +25,7 @@ window.onload = function () {
                     this.keyword = ''
                     return
                 }
+                this.keyword = ''
                 await db.getCourseAllData(this.courseClass).then(result => {
                     this.subjectList = result
                 })
@@ -38,6 +39,8 @@ window.onload = function () {
         mounted: function () {
             db.courseList.then(result => {
                 this.courseList = result
+                this.courseClass = result[0].course
+                this.onSelectCourseChange()
             })
         }
     });
