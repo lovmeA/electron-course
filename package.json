@@ -1,6 +1,6 @@
 {
   "name": "course",
-  "version": "1.0.0",
+  "version": "v1.0.0",
   "description": "自考校考答题答案 - 晴天雨露",
   "main": "main.js",
   "scripts": {
